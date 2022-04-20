@@ -1,8 +1,16 @@
 import React from 'react'
+import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
+import { store } from './redux/store'
+import CustomRoutes from './routes/CustomRoutes'
 
 const App = () => {
     return (
-      <div>App</div>
+      <Provider store={store}>
+            <BrowserRouter>
+                <CustomRoutes />
+            </BrowserRouter>
+      </Provider>
     )
 }
 

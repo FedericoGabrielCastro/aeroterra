@@ -1,9 +1,9 @@
 import React, {lazy, Suspense} from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import Loading from '../components/Loading'
+import Loading from '../components/Loading/Loading'
 
 // Lazy load pages.
-const HomePage = lazy(() => import("../views/HomePage"))
+const HomePage = lazy(() => import("../views/HomePage/HomePage"))
 
 // Manage all routes.
 const CustomRoutes = () => {

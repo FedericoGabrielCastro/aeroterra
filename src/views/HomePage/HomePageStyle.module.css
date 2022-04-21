@@ -1,0 +1,34 @@
+.headerContent{
+    display: flex;
+    justify-content: center;
+}
+.appLogo {
+    width: 40vw ;
+}
+.mainContent {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.searchAndMapContainer {
+    display: flex; 
+    flex-direction: column;
+    gap: 10px;
+}
+/* .searchContent {
+    
+}
+*/
+.mapContent {
+    padding-bottom: 10px   
+} 
+
+@media screen and (max-width: 900px){
+    .mainContent {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

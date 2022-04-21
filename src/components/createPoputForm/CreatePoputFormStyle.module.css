@@ -1,0 +1,88 @@
+@import url("../../styles/colors.css");
+
+:root {
+    --font-size: 1.3vw;
+}
+
+.formContent {
+    background-color: var(--color-glass);  
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 350px;
+    align-items: space-between;
+    gap: 15px;
+    font-size: var(--font-size);
+    box-shadow: var(--color-glass) 10px 5px 30px 0px;
+}
+
+.formContent div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+.formContent div label {
+    color: var(--color-white);
+    
+}
+.formContent div input {
+    background-color: var(--color-glass);
+    border-radius: 15px;
+    padding: 5px;
+    text-align: center;
+    color: var(--color-white);
+    font-size: var(--font-size);
+}
+.formContent div input::placeholder {
+    font-size: var(--font-size);
+    text-align: center;
+    color: var(--color-gray);
+}
+.selectOpt {
+    height: 50px;
+}
+
+.iconMap {
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    color: var(--color-lightBlue);
+}
+.buttonSubmit {
+    padding: 10px
+}
+
+@media screen and (max-width: 900px){
+    .formContent {
+        font-size: 1.2vw;
+        gap: 5px;
+    }
+    .formContent div input {
+        font-size: 2vw;
+    }
+    .buttonSubmit {
+        padding: 2px
+    }
+    .selectOpt {
+        height: 30px;
+    }
+    .iconMap {
+        cursor: pointer;
+        height: 30px;
+        width: 20px;
+        color: var(--color-lightBlue);
+    }
+}
+
+@media screen and (max-width: 500px){
+    .formContent {
+        font-size: 4vw;
+        gap: 5px;
+        width: 220px;
+    }
+    .formContent div input {
+        font-size: 3vw;
+    }
+}

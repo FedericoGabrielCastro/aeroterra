@@ -1,0 +1,25 @@
+@import url("../../styles/colors.css");
+
+:root {
+    --circle: 10vw;
+    --border: 16px;
+}
+
+.positionLoading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.simlpleLoading {
+    border: var(--border) solid var(--color-black);
+    border-top: var(--border) solid var(--color-lightBlue);
+    border-radius: 50%;
+    width: var(--circle);
+    height: var(--circle);
+    animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

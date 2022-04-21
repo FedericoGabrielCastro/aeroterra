@@ -1,0 +1,1 @@
+export const SHOW_MAP_MODAL = "SHOW_MAP_MODAL"

@@ -1,6 +1,6 @@
 /**
  *  https://react-leaflet.js.org/docs/example-popup-marker/
- *  See "Examples" to change what tipo of map prefer in TileLayer
+ *  See "Examples" to change what tipe of map prefer in TileLayer
  */
 import React from 'react'
 import { MapContainer, TileLayer } from 'react-leaflet'

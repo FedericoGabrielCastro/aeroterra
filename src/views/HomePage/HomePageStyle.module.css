@@ -21,9 +21,10 @@
 /* .searchContent {
     
 }
+*/
 .mapContent {
-    
-} */
+    padding-bottom: 10px   
+} 
 
 @media screen and (max-width: 900px){
     .mainContent {

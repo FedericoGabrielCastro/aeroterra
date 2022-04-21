@@ -1,7 +1,11 @@
-import React, { Fragment } from 'react'
+import React, { lazy, Suspense, Fragment } from 'react'
 import styles from './HomePageStyle.module.css'
 
 import logo from '../../assets/logoW.png'
+
+import SearchPopup from '../../components/search/SearchPopup'
+import CreatePoputForm from '../../components/createPoputForm/CreatePoputForm'
+import LeafletMap from '../../components/LeafletMap/LeafletMap' 
 
 const HomePage = () => {
     return (
@@ -12,16 +16,16 @@ const HomePage = () => {
                 </nav>
             </header>
             <main className={styles.mainContent}>
-                <section>
-                    <article>
-                        search
+                <section className={styles.searchAndMapContainer}>
+                    <article className={styles.searchContent}>
+                        <SearchPopup />
                     </article>
-                    <article>
-                        Map
+                    <article className={styles.mapContent}>
+                        <LeafletMap />
                     </article>
                 </section>
                 <aside>
-                    Form
+                    <CreatePoputForm />
                 </aside>
             </main>
         </Fragment>

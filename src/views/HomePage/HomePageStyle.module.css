@@ -11,5 +11,23 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    background-color: rgb(121, 116, 116);
+
+}
+.searchAndMapContainer {
+    display: flex; 
+    flex-direction: column;
+    gap: 10px;
+}
+/* .searchContent {
+    
+}
+.mapContent {
+    
+} */
+
+@media screen and (max-width: 900px){
+    .mainContent {
+        flex-direction: column;
+        gap: 10px;
+    }
 }

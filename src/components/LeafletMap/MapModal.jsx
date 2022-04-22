@@ -1,5 +1,5 @@
 import React, { Fragment} from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { MapContainer, TileLayer } from 'react-leaflet'
 
 import styles from './MapModalStyle.module.css'
@@ -8,11 +8,11 @@ import "./LeafletMapStyle.css"
 
 import { showMapModalAction } from '../../redux/actions/showMapModalAction'
 
-const position = [51.505, -0.09] // Initial coordinates.
-
 const MapModal = () => {
 
     const dispatch = useDispatch()
+
+    const currentLocation = useSelector(store => store.getCurrentLocationReducer)
 
     const handleCLoseModal = () => {
         dispatch(showMapModalAction())
@@ -23,7 +23,7 @@ const MapModal = () => {
             <div className={styles.overlayScreen}>
                 <div className={styles.decoreModal}>
                     <MapContainer 
-                        center={position} // Coordinates where the map begins.
+                        center={currentLocation} // Coordinates where the map begins.
                         zoom={13} // Map zoom.
                     >
                     <TileLayer 

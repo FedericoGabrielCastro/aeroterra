@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react'
-import { useSelector } from 'react-redux'
+import React, { Fragment, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import styles from './HomePageStyle.module.css'
 
 import logo from '../../assets/logoW.png'
@@ -9,9 +9,27 @@ import CreatePoputForm from '../../components/createPoputForm/CreatePoputForm'
 import LeafletMap from '../../components/LeafletMap/LeafletMap' 
 import MapModal from '../../components/LeafletMap/MapModal'
 
+import { getCurrentLocationAction, getCurrentLocationErrorAction } from '../../redux/actions/getCurrentLocationAction'
+
 const HomePage = () => {
 
+    const dispatch = useDispatch()
+    
     const showModal = useSelector(store => store.showMapModalReducer) // Boolean.
+
+    useEffect(() => {
+        navigator.geolocation.getCurrentPosition(
+            function (positon) {
+                dispatch(getCurrentLocationAction({
+                    lng: positon.coords.longitude,
+                    lat: positon.coords.latitude
+                }))
+            },
+            function (error) {
+                dispatch(getCurrentLocationErrorAction(error))
+            }
+        )
+    }, [dispatch])
 
     return (
         <Fragment>

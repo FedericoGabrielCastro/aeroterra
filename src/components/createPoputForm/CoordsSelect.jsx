@@ -14,6 +14,9 @@ const CoordsSelect = ({ htmlFor, title, className }) => {
 
     const dispatch = useDispatch()
 
+    const lat = useSelector(store => store.getLocationForFormReducer)
+    console.log("LAT SAD SA SAD ", lat)
+
     const handleOpenModal = () => {
         dispatch(showMapModalAction())
     }

@@ -10,9 +10,6 @@ const Markers = ({ markers }) => {
     const handleDeletePopup = () => {
         alert("borrar popup")
     }
-
-    console.log("PROPS", markers)
-
     
     // Maping Json.
     const setMarkers = markers.map((marker, index) => {

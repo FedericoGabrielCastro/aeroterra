@@ -8,6 +8,7 @@ import SearchPopup from '../../components/search/SearchPopup'
 import CreatePoputForm from '../../components/createPoputForm/CreatePoputForm'
 import LeafletMap from '../../components/LeafletMap/LeafletMap' 
 import MapModal from '../../components/LeafletMap/MapModal'
+import Toast from '../../components/Toast/Toast'
 
 import { getCurrentLocationAction, getCurrentLocationErrorAction } from '../../redux/actions/getCurrentLocationAction'
 
@@ -33,6 +34,7 @@ const HomePage = () => {
 
     return (
         <Fragment>
+            <Toast />
             { showModal ? <MapModal /> : null }
             <header className={styles.headerContent}>
                 <nav>

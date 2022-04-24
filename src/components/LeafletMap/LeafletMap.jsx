@@ -14,8 +14,9 @@ import JsonData from '../../utils/markers.json'
 const LeafletMap = () => {
 
     const currentLocation = useSelector(store => store.getCurrentLocationReducer)
-
-    const markers = JsonData.markers // Json makers
+    const cmarkers = useSelector(store => store.setDataFormReducer)
+    
+    const markers = cmarkers // Json makers
 
     return <MapContainer 
         center={currentLocation} // Coordinates where the map begins.

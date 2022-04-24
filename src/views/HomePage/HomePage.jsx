@@ -20,6 +20,7 @@ const HomePage = () => {
     const showModal = useSelector(store => store.showMapModalReducer) // Boolean to show map modal.
 
     useEffect(() => {
+        dispatch(setDataFormAction())
         navigator.geolocation.getCurrentPosition(
             function (positon) {
                 dispatch(getCurrentLocationAction({
@@ -31,7 +32,6 @@ const HomePage = () => {
                 dispatch(getCurrentLocationErrorAction(error))
             }
         )
-        dispatch(setDataFormAction())
     }, [dispatch])
 
     return (

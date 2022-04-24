@@ -1,6 +1,6 @@
 import React from 'react'
 import { useFormik } from 'formik'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import * as yup from 'yup'
 import {v4 as uuid} from 'uuid'
 import styles from "./CreatePoputFormStyle.module.css"
@@ -13,9 +13,9 @@ import { addDataFormAction } from '../../redux/actions/setDataFormAction'
 
 // Category Options.
 const options = [
-    {value: 'commercial', label: 'Comercial'},
-    {value: 'residential', label: 'Residencial'},
-    {value: 'mixed', label: 'Mixta'}
+    {value: 'comercio', label: 'comercio'},
+    {value: 'home', label: 'home'},
+    {value: 'mixta', label: 'mixta'}
 ]
 
 // Basic form input/label data.
@@ -49,7 +49,7 @@ const CreatePoputForm = () => {
             name: "", // String
             address: "", // String
             tel: 0, // Number 
-            category: "mixed", // Options <Comercial - Residencial - Mixta>
+            category: "mixta", // Options <Comercial - Residencial - Mixta>
             coord: [],
         },
         validationSchema: formSchema,

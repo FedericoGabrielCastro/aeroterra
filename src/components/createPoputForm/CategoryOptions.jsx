@@ -27,7 +27,7 @@ const CategoryOptions = ({ htmlFor, title, onChange, value, options, className})
 
 // React-select style
 const optStyle = {
-    control: (styles) => ({ ...styles, backgroundColor: " rgba(255, 255, 255, .15)"}), // Select menu.
+    control: (styles) => ({ ...styles, backgroundColor: "rgba(255, 255, 255, .15)"}), // Select menu.
     option: (provided, state) => ({ //Opt menu
             ...provided,
             fontWeight: state.isSelected ? "bold" : "normal",

@@ -1,0 +1,34 @@
+{
+    "markers": [
+        {
+            "name": "testOne",
+            "address": "testOne",
+            "tel": "1223412",
+            "category": "home",
+            "coords": [
+                "51.505",
+                "1"
+            ]
+        },
+        {
+            "name": "testTwo",
+            "address": "testTwo",
+            "tel": "1223412",
+            "category": "comercio",
+            "coords": [
+                "51.505",
+                "1.3"
+            ]
+        },
+        {
+            "name": "testThree",
+            "address": "testThree",
+            "tel": "1223412",
+            "category": "mixta",
+            "coords": [
+                "51.505",
+                "1.5"
+            ]
+        }
+    ]
+}

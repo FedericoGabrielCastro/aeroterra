@@ -1,10 +1,15 @@
 import React from 'react'
 import { useFormik } from 'formik'
+import { useDispatch } from 'react-redux'
+import * as yup from 'yup'
+import {v4 as uuid} from 'uuid'
 import styles from "./CreatePoputFormStyle.module.css"
 
 import BasicInput from './BasicInput'
 import CategoryOptions from './CategoryOptions'
 import CoordsSelect from './CoordsSelect'
+
+import { addDataFormAction } from '../../redux/actions/setDataFormAction'
 
 // Category Options.
 const options = [
@@ -22,17 +27,47 @@ const inputs = [
 
 const CreatePoputForm = () => {
 
+    const dispatch = useDispatch()
+    
+    // Validation formik
+    const formSchema = yup.object().shape({
+        name: yup.string()
+            .required("Nombre requerido")
+            .max(10, "Nombre 10 caracteres maximo"),
+        address: yup.string()
+            .required("Dirreccion requerida")
+            .max(10, "Dirreccion 10 caracteres maximo"),
+        tel: yup.number()
+            .min(8, "Tel minimo 8 numeros"), 
+        // coord: yup.string()
+            // .required()
+    })
+
     // Manage all formik props.
     const formik = useFormik({
         initialValues: {
             name: "", // String
             address: "", // String
-            tel: "", // Number 
-            category: "commercial", // Options <Comercial - Residencial - Mixta>
-            coord: "" // 
+            tel: 0, // Number 
+            category: "mixed", // Options <Comercial - Residencial - Mixta>
+            coord: [],
         },
-        onSubmit: values => {console.log(values)},
+        validationSchema: formSchema,
+        onSubmit: values => {
+            console.log(values)
+            alert(JSON.stringify(values))
+            dispatch(addDataFormAction({
+                name: values.name,
+                address: values.address,
+                tel: values.tel,
+                category: values.category,
+                coord: values.coord,
+                id: uuid()
+            }))
+            // console.log(axios.post("http://localhost:3000/src/utils/markers.json", JSON.stringify(values)))
+        },
     })
+
     
     return (
         <form className={styles.formContent} onSubmit={formik.handleSubmit}>
@@ -47,7 +82,7 @@ const CreatePoputForm = () => {
                         placeholder={item.placeholder} 
                         onChange={formik.handleChange} // Formik props.
                         onBlur={formik.onBlur}
-                    />
+                        />
                 })
             }
             <CategoryOptions 
@@ -62,9 +97,13 @@ const CreatePoputForm = () => {
                     className={styles.iconMap}
                     htmlFor={"coord"}
                     title={"Coords"}
+                    name="coord"
+                    onChange={value => formik.setFieldValue('coord', value.target.value.split(',')).handleChange} // Formik props.
+                    onBlur={formik.onBlur}
                 />
             </div>
             <button className={styles.buttonSubmit} type="submit"> Colocar </button>
+            <span> { formik.errors.name || formik.errors.address || formik.errors.tel } </span>
         </form>
     )
 }

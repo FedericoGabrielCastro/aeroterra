@@ -4,7 +4,7 @@
 import React from 'react'
 
 // Returns a basic input and label.
-const BasicInput = ({ htmlFor, title, type, id, name, placeholder, onChange, onBlur }) => {
+const BasicInput = ({ htmlFor, title, type, id, name, placeholder, onChange, onBlur, error }) => {
     return (
         <div>
             <label htmlFor={htmlFor}>{title}</label>
@@ -15,7 +15,8 @@ const BasicInput = ({ htmlFor, title, type, id, name, placeholder, onChange, onB
                 placeholder={placeholder}
                 onChange={onChange}
                 onBlur={onBlur}
-            /> 
+            />
+            <span> {error} </span>
         </div>
     )
 }

@@ -9,7 +9,7 @@ import 'leaflet/dist/leaflet.css'
 import "./LeafletMapStyle.css"
 
 import Markers from '../Markers/Markers'
-import JsonData from '../utils/markers.json'
+import JsonData from '../../utils/markers.json'
 
 const LeafletMap = () => {
 

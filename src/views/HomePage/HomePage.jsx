@@ -11,12 +11,13 @@ import MapModal from '../../components/LeafletMap/MapModal'
 import Toast from '../../components/Toast/Toast'
 
 import { getCurrentLocationAction, getCurrentLocationErrorAction } from '../../redux/actions/getCurrentLocationAction'
+import { setDataFormAction } from '../../redux/actions/setDataFormAction'
 
 const HomePage = () => {
 
     const dispatch = useDispatch()
     
-    const showModal = useSelector(store => store.showMapModalReducer) // Boolean.
+    const showModal = useSelector(store => store.showMapModalReducer) // Boolean to show map modal.
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
@@ -30,6 +31,7 @@ const HomePage = () => {
                 dispatch(getCurrentLocationErrorAction(error))
             }
         )
+        dispatch(setDataFormAction())
     }, [dispatch])
 
     return (

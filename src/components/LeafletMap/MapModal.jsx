@@ -16,8 +16,9 @@ const MapModal = () => {
 
     const dispatch = useDispatch()
 
-    const currentLocation = useSelector(store => store.getCurrentLocationReducer)
+    const currentLocation = useSelector(store => store.getCurrentLocationReducer) // Inital lat/lng in the map
 
+    // CLose Modal
     const handleCLoseModal = () => {
         dispatch(showMapModalAction())
     }
@@ -28,13 +29,12 @@ const MapModal = () => {
         popupAnchor: [2, -40],
         iconUrl: "https://unpkg.com/leaflet@1.6/dist/images/marker-icon.png",
         shadowUrl: "https://unpkg.com/leaflet@1.6/dist/images/marker-shadow.png"
-      });
+    });
 
-   
+    // Set coords on click on the map.
     const MapFun =  () => {
         const map = useMapEvents({
             click: (e) => {
-                console.log("mapCenter", e.target.getCenter()); 
                 dispatch(showMapModalAction())
                 dispatch(getLocationForFormAction({
                         latitude: e.target.getCenter().lat,

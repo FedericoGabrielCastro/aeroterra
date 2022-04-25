@@ -2,21 +2,18 @@
  *  https://react-leaflet.js.org/docs/example-popup-marker/
  *  See "Examples" to change what tipe of map prefer in TileLayer
  */
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { MapContainer, TileLayer } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import "./LeafletMapStyle.css"
 
 import Markers from '../Markers/Markers'
-import JsonData from '../../utils/markers.json'
 
 const LeafletMap = () => {
 
     const currentLocation = useSelector(store => store.getCurrentLocationReducer)
-    const cmarkers = useSelector(store => store.setDataFormReducer)
-    
-    const markers = cmarkers // Json makers
+    const markers = useSelector(store => store.setDataFormReducer)
 
     return <MapContainer 
         center={currentLocation} // Coordinates where the map begins.

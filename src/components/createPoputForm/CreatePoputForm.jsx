@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useFormik } from 'formik'
 import { useDispatch } from 'react-redux'
 import * as yup from 'yup'
@@ -13,9 +14,9 @@ import { addDataFormAction } from '../../redux/actions/setDataFormAction'
 
 // Category Options.
 const options = [
-    {value: 'commercial', label: 'Comercial'},
-    {value: 'residential', label: 'Residencial'},
-    {value: 'mixed', label: 'Mixta'}
+    {value: 'comercio', label: 'comercio'},
+    {value: 'home', label: 'home'},
+    {value: 'mixta', label: 'mixta'}
 ]
 
 // Basic form input/label data.
@@ -28,7 +29,11 @@ const inputs = [
 const CreatePoputForm = () => {
 
     const dispatch = useDispatch()
-    
+    const [coords, setCoords] = useState("")
+
+    const data = useSelector(store => store.getLocationForFormReducer)
+
+
     // Validation formik
     const formSchema = yup.object().shape({
         name: yup.string()
@@ -39,8 +44,8 @@ const CreatePoputForm = () => {
             .max(10, "Dirreccion 10 caracteres maximo"),
         tel: yup.number()
             .min(8, "Tel minimo 8 numeros"), 
-        // coord: yup.string()
-            // .required()
+        coord: yup.string()
+            .required("Elige unas coordenadas")
     })
 
     // Manage all formik props.
@@ -49,24 +54,27 @@ const CreatePoputForm = () => {
             name: "", // String
             address: "", // String
             tel: 0, // Number 
-            category: "mixed", // Options <Comercial - Residencial - Mixta>
-            coord: [],
+            category: "mixta", // Options <Comercial - Residencial - Mixta>
+            coord: undefined,
         },
         validationSchema: formSchema,
         onSubmit: values => {
-            console.log(values)
-            alert(JSON.stringify(values))
+            console.log(values.coord)
             dispatch(addDataFormAction({
                 name: values.name,
                 address: values.address,
                 tel: values.tel,
                 category: values.category,
-                coord: values.coord,
+                coord: values.coord.split(','),
                 id: uuid()
             }))
-            // console.log(axios.post("http://localhost:3000/src/utils/markers.json", JSON.stringify(values)))
         },
     })
+
+    useEffect(() => {
+        setCoords(`${data.latitude},${data.longitude}`)
+        formik.setFieldValue('coord', coords)
+    }, [data.latitude, data.longitude, coords])
 
     
     return (
@@ -95,10 +103,11 @@ const CreatePoputForm = () => {
             <div>
                 <CoordsSelect
                     className={styles.iconMap}
+                    value={coords}
                     htmlFor={"coord"}
                     title={"Coords"}
                     name="coord"
-                    onChange={value => formik.setFieldValue('coord', value.target.value.split(',')).handleChange} // Formik props.
+                    onChange={formik.handleChange} // Formik props.
                     onBlur={formik.onBlur}
                 />
             </div>

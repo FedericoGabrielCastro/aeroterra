@@ -1,6 +1,7 @@
 {
     "markers": [
         {
+            "id": "1",
             "name": "testOne",
             "address": "testOne",
             "tel": "1223412",
@@ -11,6 +12,7 @@
             ]
         },
         {
+            "id": "2",
             "name": "testTwo",
             "address": "testTwo",
             "tel": "1223412",
@@ -21,6 +23,7 @@
             ]
         },
         {
+            "id": "3",
             "name": "testThree",
             "address": "testThree",
             "tel": "1223412",
